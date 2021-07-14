@@ -3,7 +3,7 @@ import cors from '@koa/cors'
 import bodyParser from 'koa-bodyparser'
 import { errors, restify } from 'middlewares'
 import { NODE_DEV } from 'utils/config'
-import v1 from 'routes'
+import { v1 } from 'routes'
 
 const app = new Koa()
 

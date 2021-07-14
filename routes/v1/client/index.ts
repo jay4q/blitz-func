@@ -1,7 +1,7 @@
 import Router from '@koa/router'
 
-const router = new Router({
+const client = new Router({
   prefix: '/client'
 })
 
-export default router
+export { client }

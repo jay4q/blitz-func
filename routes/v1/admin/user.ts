@@ -7,12 +7,12 @@ import { REQUEST_UID, TCB_TOKEN_SECRET } from 'utils/config'
 import { DB_USER_ADMIN } from 'utils/db'
 import { isArrayEmpty, respond } from 'utils/helper'
 
-const router = new Router({
+const user = new Router({
   prefix: '/user',
 })
 
 // 管理员登录
-router.post('/login', async (ctx: Context) => {
+user.post('/login', async (ctx: Context) => {
   const { username, password } = ctx.request.body as { username: string, password: string }
 
   if (!username || !password) respond.fail(400, '请填写有效的用户名和密码')
@@ -41,7 +41,7 @@ router.post('/login', async (ctx: Context) => {
 })
 
 // 获取用户信息
-router.get('/profile', adminGuard, async (ctx) => {
+user.get('/profile', adminGuard, async (ctx) => {
   const resp = await getDatabase()
     .collection(DB_USER_ADMIN)
     .doc(ctx.request[REQUEST_UID])
@@ -55,4 +55,4 @@ router.get('/profile', adminGuard, async (ctx) => {
   respond.ok(ctx, { user: resp.data[0] })
 })
 
-export default router
+export { user }
