@@ -1,0 +1,30 @@
+{
+  "verbose": false,
+  "debug": false,
+  "exec": "ts-node -r tsconfig-paths/register ./dev.ts",
+  "ignore": [
+    "mochawesome-report",
+    "node_modules",
+    "dist",
+    "functions",
+    "scripts",
+    "**/*.d.ts",
+    "*.test.ts",
+    "*.spec.ts",
+    "fixtures/*",
+    "test/**/*",
+    "docs/*"
+  ],
+  "events": {
+    "restart": ""
+  },
+  "watch": [
+    "./middlewares",
+    "./routes",
+    "./utils",
+    "./app.ts",
+    "./dev.ts"
+  ],
+  "ext": "ts",
+  "inspect": true
+}

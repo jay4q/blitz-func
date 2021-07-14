@@ -1,0 +1,49 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "target": "ES2018",
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "outDir": "./dist",
+    "removeComments": true,
+    "noImplicitAny": false,
+    "esModuleInterop": true,
+    "preserveConstEnums": true,
+    "typeRoots": [
+      "node_modules/@types",
+      "typings"
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "middlewares": [
+        "middlewares"
+      ],
+      "routes": [
+        "routes"
+      ],
+      "utils": [
+        "utils"
+      ]
+    },
+    "plugins": [
+      {
+        "transform": "typescript-transform-paths"
+      }
+    ]
+  },
+  "compileOnSave": false,
+  "includes": [
+    "middlewares/**/*",
+    "routes/**/*",
+    "utils/**/*",
+    "**/*.ts"
+  ],
+  "files": [
+    "app.ts",
+    "dev.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}

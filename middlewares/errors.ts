@@ -1,12 +1,13 @@
-const { BusinessError } = require('../utils/utils')
-const { TokenExpiredError } = require('jsonwebtoken')
+import { TokenExpiredError } from 'jsonwebtoken'
+import { Context, Next } from 'koa'
+import { BusinessError } from 'utils/helper'
 
 /**
- * 统一的错误处理
- * @param {*} ctx 
- * @param {*} next 
+ * 统一的异常处理中间件
+ * @param ctx 
+ * @param next 
  */
-module.exports = async (ctx, next) => {
+export const errors = async (ctx: Context, next: Next) => {
   try {
     await next()
   } catch (err) {
@@ -27,7 +28,7 @@ module.exports = async (ctx, next) => {
         code: 401,
         message: '登录已失效，请重新登录'
       }
-    }else {
+    } else {
       console.error('<====== 异常响应日志 =====>')
       console.error(ctx.request)
       console.error(err)

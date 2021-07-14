@@ -1,0 +1,1 @@
+export const DB_USER_ADMIN = 'user_admin'

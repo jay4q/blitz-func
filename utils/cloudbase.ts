@@ -1,20 +1,19 @@
 // 注意这是腾讯云提供的 sdk
-const cloud = require('@cloudbase/node-sdk')
-const { isDev } = require('./utils')
-const { TCB_ENVID, TCB_SECRET_ID, TCB_SECRET_KEY } = require('./constant')
+import { init, ICloudBaseConfig, CloudBase, Database } from '@cloudbase/node-sdk'
+import { TCB_ENVID, TCB_SECRET_ID, TCB_SECRET_KEY, NODE_DEV } from './config'
 
-let _app
-let _db
+let _app: CloudBase
+let _db: Database.Db
 
 /**
  * 获取云开发应用实例
  * @returns CloudBase
  */
-const getCloudApp = () => {
+export const getCloudApp = () => {
   if (!_app) {
-    let config = { env: TCB_ENVID }
+    let config: ICloudBaseConfig = { env: TCB_ENVID }
 
-    if (isDev()) {
+    if (NODE_DEV) {
       config = {
         ...config,
         secretId: TCB_SECRET_ID,
@@ -22,7 +21,7 @@ const getCloudApp = () => {
       }
     }
 
-    _app = cloud.init(config)
+    _app = init(config)
   }
 
   return _app
@@ -32,16 +31,11 @@ const getCloudApp = () => {
  * 获取云开发数据库实例
  * @returns Database
  */
-const getDatabase = () => {
+export const getDatabase = () => {
   if (!_db) {
     const app = getCloudApp()
     _db = app.database()
   }
 
   return _db
-}
-
-module.exports = {
-  getCloudApp,
-  getDatabase,
 }

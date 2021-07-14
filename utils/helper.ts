@@ -1,4 +1,9 @@
-class BusinessError extends Error {
+import { Context } from 'koa'
+
+export class BusinessError extends Error {
+  code: number
+  data: any
+
   constructor(body) {
     super(JSON.stringify(body))
     this.name = 'BusinessError'
@@ -8,17 +13,17 @@ class BusinessError extends Error {
   }
 }
 
-const respond = {
-  ok: (ctx, data) => {
+export const respond = {
+  ok: (ctx: Context, data: any) => {
     ctx.status = 200
     ctx.body = { data, code: 200, message: 'SUCCESS' }
   },
-  fail: ({ code, message, data }) => {
+  fail: (code: number, message: string, data?: any) => {
     throw new BusinessError({ code, message, data })
   }
 }
 
-const getCreateTime = () => {
+export const getCreateTime = () => {
   const createTime = new Date().getTime()
   return {
     _createTime: createTime,
@@ -26,14 +31,4 @@ const getCreateTime = () => {
   }
 }
 
-const isArrayEmpty = arr => !Array.isArray(arr) || arr.length === 0
-
-const isDev = () => process.env.NODE_ENV === 'development'
-
-module.exports = {
-  isDev,
-  respond,
-  BusinessError,
-  getCreateTime,
-  isArrayEmpty,
-}
+export const isArrayEmpty = arr => !Array.isArray(arr) || arr.length === 0
