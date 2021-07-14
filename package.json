@@ -1,0 +1,27 @@
+{
+  "name": "blitz-func",
+  "version": "1.0.0",
+  "description": "nodejs cloud function template made for tecent cloudbase",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development nodemon ./dev.js",
+    "deploy": "zx ./scripts/deploy.mjs"
+  },
+  "author": "jay4q.com",
+  "license": "ISC",
+  "dependencies": {
+    "@cloudbase/node-sdk": "latest",
+    "@koa/cors": "^3.1.0",
+    "@koa/router": "^10.0.0",
+    "dotenv": "^10.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "koa": "^2.13.1",
+    "koa-bodyparser": "^4.3.0",
+    "serverless-http": "^2.7.0",
+    "wx-server-sdk": "latest"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "nodemon": "^2.0.12",
+    "zx": "^2.0.0"
+  }
+}

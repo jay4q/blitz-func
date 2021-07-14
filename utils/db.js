@@ -1,0 +1,1 @@
+exports.USER_ADMIN = 'user_admin'
