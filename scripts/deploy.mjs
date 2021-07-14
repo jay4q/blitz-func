@@ -13,11 +13,13 @@ if (!env.error) {
   const funcName = env.parsed.TCB_FUNC_NAME
   const subpath = env.parsed.TCB_HTTP_PATH
 
-  // 开始部署流程
   if (envId && subpath && funcName) {
-    // tcb fn deploy -e taipu-river-1gg6jtrg176cc182 --path /taipu/admin-api --dir . taipu-admin-api
-    await $`tcb fn deploy -e ${envId} --path ${subpath} --dir . ${funcName}`
-    console.log(chalk.green('🎉🎉🎉 成功部署'))
+    await $`rm -rf dist`
+    await $`ttsc -P tsconfig.json`
+    await $`cp index.js package.json .env.prod dist/`
+    console.log('🎉🎉🎉成功编译代码')
+    await $`tcb fn deploy -e ${envId} --path ${subpath} --dir ./dist ${funcName}`
+    console.log(chalk.green('🎉🎉🎉成功部署云函数'))
   } else {
     console.log(chalk.red(`请检查 ${ENV_FILE} 内的变量是否填写完整`))
   }
