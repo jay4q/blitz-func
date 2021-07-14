@@ -1,6 +1,11 @@
 # 腾讯云开发云函数｜模版
 
-基于腾讯云开发/云函数，使用 Koa 模拟路由，让单个云函数支持多样的业务
+基于腾讯云开发云函数的模板，支持以下特性：
+
+1. 使用 Koa 模拟路由，让单个云函数支持多样的业务
+2. 支持使用 Typescript 进行开发
+3. 支持一些通用的能力，如 管理端用户登录、授权 等
+4. 支持一件部署至腾讯云开发环境
 
 ## 准备和开发
 
@@ -35,7 +40,10 @@
 
 ## 注意事项
 
-+ 目前仅支持通过 [node-sdk](https://docs.cloudbase.net/api-reference/server/node-sdk/database/database.html) 介入腾讯云开发数据库。未来可能考虑通过引入 [serverless-mysql](https://github.com/jeremydaly/serverless-mysql#readme) 以支持连接 mysql
++ 「待定」目前仅支持通过 [node-sdk](https://docs.cloudbase.net/api-reference/server/node-sdk/database/database.html) 接入腾讯云开发数据库
+  + 如果需要使用微信云开发相关能力，请自行安装 [wx-server-sdk](https://developers.weixin.qq.com/miniprogram/dev/wxcloud/guide/functions/wx-server-sdk.html) 并修改相关依赖
+  + 未来可能考虑通过引入 [serverless-mysql](https://github.com/jeremydaly/serverless-mysql#readme) 以支持连接 mysql
++ 「建议」不要使用 `export default` 而是直接使用 `export` 导出模块
 
 ## API
 
