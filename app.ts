@@ -26,4 +26,4 @@ app.use(restify)
 // 使用路由
 app.use(v1.routes())
 
-export default app
+export { app }

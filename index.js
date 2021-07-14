@@ -1,4 +1,4 @@
-const app = require('./app')
+const { app } = require('./app')
 const serverless = require('serverless-http')
 
 const handler = serverless(app)
