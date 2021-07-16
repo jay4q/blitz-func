@@ -14,11 +14,17 @@ if (!env.error) {
   const subpath = env.parsed.TCB_HTTP_PATH
 
   if (envId && subpath && funcName) {
-    await $`rm -rf dist`
+    const targetDir = `functions/${funcName}`
+
+    await $`rm -rf functions && rm -rf`
     await $`ttsc -P tsconfig.json`
-    await $`cp index.js package.json .env.prod dist/`
     console.log('🎉🎉🎉成功编译代码')
-    await $`tcb fn deploy -e ${envId} --path ${subpath} --dir ./dist ${funcName}`
+    await $`mkdir -p ${targetDir}`
+    await $`cp -r dist/ ${targetDir}`
+    await $`cp index.js package.json .env.prod ${targetDir}`
+    console.log('🎉🎉🎉文件结构梳理完毕')
+    await $`tcb fn deploy --mode prod --path ${subpath} ${funcName}`
+    // await $`tcb fn deploy -e ${envId} --path ${subpath} --dir ./dist ${funcName}`
     console.log(chalk.green('🎉🎉🎉成功部署云函数'))
   } else {
     console.log(chalk.red(`请检查 ${ENV_FILE} 内的变量是否填写完整`))

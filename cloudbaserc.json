@@ -1,0 +1,14 @@
+{
+  "envId": "{{env.TCB_ENVID}}",
+  "functionRoot": "./functions",
+  "functions": [
+    {
+      "name": "{{env.TCB_FUNC_NAME}}",
+      "timeout": 10,
+      "runtime": "Nodejs12.16",
+      "installDependency": true,
+      "handler": "index.main",
+      "memorySize": 128
+    }
+  ]
+}

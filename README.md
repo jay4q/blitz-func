@@ -16,6 +16,7 @@
 ## 部署
 
 1. 执行 `yarn deploy` 命令部署至线上（全量发布即可）
+2. 「选做」进入云开发控制台，点击「访问服务」，可以给云函数触发路径加上鉴权，增加安全性
 
 ## 运维
 
@@ -32,7 +33,8 @@
 + [x] 使用 token 进行业务鉴权
 + [x] 「重要」使用 typescript
 + [x] 「重要」更新部署脚本，上线前需要先编译项目
-+ [ ] 「待定」使用 cloudbaserc 配置部署环境，配置参数相比 cli 更多也还可以自定义 nodejs 版本
++ [x] 使用 cloudbaserc 配置部署环境，配置参数相比 cli 更多也还可以自定义 nodejs 版本
++ [ ] 接入 prisma 以支持 mysql
 
 ## 开发要求
 
@@ -40,12 +42,12 @@
 
 ## 注意事项
 
-+ 「待定」目前仅支持通过 [node-sdk](https://docs.cloudbase.net/api-reference/server/node-sdk/database/database.html) 接入腾讯云开发数据库
++ 目前仅支持通过 [node-sdk](https://docs.cloudbase.net/api-reference/server/node-sdk/database/database.html) 接入腾讯云开发数据库
   + 如果需要使用微信云开发相关能力，请自行安装 [wx-server-sdk](https://developers.weixin.qq.com/miniprogram/dev/wxcloud/guide/functions/wx-server-sdk.html) 并修改相关依赖
   + 未来可能考虑通过引入 [serverless-mysql](https://github.com/jeremydaly/serverless-mysql#readme) 以支持连接 mysql
 + 「建议」不要使用 `export default` 而是直接使用 `export` 导出模块
 
-## API
+## 依赖
 
 + [koa-router](https://github.com/koajs/router/blob/master/API.md)
 + [cloudbase-functions 配置](https://github.com/Tencent/cloudbase-framework/tree/master/packages/framework-plugin-function)
