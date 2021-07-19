@@ -14,8 +14,7 @@ let connection = mysql({
 /**
  * 获取数据库连接
  */
-export const getConnection = async () => {
-  await connection.connect()
+export const getConnection = () => {
   return connection
 }
 

@@ -20,10 +20,10 @@ demo.post('/post', async (ctx: Context) => {
 })
 
 demo.get('/db', async (ctx: Context) => {
-  const connection = await getConnection()
-  const resp = await connection.query('SELECT username,avatar FROM user')
+  const resp = await getConnection().query('SELECT username,avatar FROM user')
   respond.ok(ctx, resp)
-  closeConnection()
+  // 记得关闭
+  await closeConnection()
 })
 
 export { demo }
