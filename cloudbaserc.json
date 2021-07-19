@@ -8,11 +8,7 @@
       "runtime": "Nodejs12.16",
       "installDependency": true,
       "handler": "index.main",
-      "memorySize": 128,
-      "vpc": {
-        "vpcId": "vpc-4tc8pimm",
-        "subnetId": "subnet-1likx12r"
-      }
+      "memorySize": 128
     }
   ]
 }
