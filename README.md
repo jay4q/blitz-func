@@ -34,20 +34,22 @@
 + [x] 「重要」使用 typescript
 + [x] 「重要」更新部署脚本，上线前需要先编译项目
 + [x] 使用 cloudbaserc 配置部署环境，配置参数相比 cli 更多也还可以自定义 nodejs 版本
-+ [ ] 接入 prisma 以支持 mysql
++ [x] 支持 mysql（注意这是备选方案，模板首选还是云开发云数据库）
++ [ ] 支持云函数和云mysql配置同一子网
 
 ## 开发要求
 
 + 建议还是使用 SDK 自带的 `callFunction` 方法请求云函数，不过可以进行一层封装，以便未来兼容 [HTTP 请求调用云函数](https://docs.cloudbase.net/service/access-cloud-function.html#kua-yu-chu-li)
++ 「可选」支持接入关系型数据库，详见 `./utils/mysql.ts` 以及 [serverless-mysql](https://github.com/jeremydaly/serverless-mysql)
 
 ## 注意事项
 
 + 目前仅支持通过 [node-sdk](https://docs.cloudbase.net/api-reference/server/node-sdk/database/database.html) 接入腾讯云开发数据库
   + 如果需要使用微信云开发相关能力，请自行安装 [wx-server-sdk](https://developers.weixin.qq.com/miniprogram/dev/wxcloud/guide/functions/wx-server-sdk.html) 并修改相关依赖
-  + 未来可能考虑通过引入 [serverless-mysql](https://github.com/jeremydaly/serverless-mysql#readme) 以支持连接 mysql
 + 「建议」不要使用 `export default` 而是直接使用 `export` 导出模块
++ 修改环境变量后，需要重新启动
 
 ## 依赖
 
 + [koa-router](https://github.com/koajs/router/blob/master/API.md)
-+ [cloudbase-functions 配置](https://github.com/Tencent/cloudbase-framework/tree/master/packages/framework-plugin-function)
++ [云函数配置](https://docs.cloudbase.net/cli-v1/functions/configs.html)

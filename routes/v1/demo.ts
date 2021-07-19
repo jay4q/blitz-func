@@ -1,5 +1,6 @@
 import Router from '@koa/router'
 import { Context } from 'koa'
+import { closeConnection, getConnection } from 'utils/mysql'
 import { respond } from 'utils/helper'
 
 const demo = new Router({
@@ -16,6 +17,13 @@ demo.get('/error', async (ctx: Context) => {
 
 demo.post('/post', async (ctx: Context) => {
   respond.ok(ctx, ctx.request.body)
+})
+
+demo.get('/db', async (ctx: Context) => {
+  const connection = await getConnection()
+  const resp = await connection.query('SELECT username,avatar FROM user')
+  respond.ok(ctx, resp)
+  closeConnection()
 })
 
 export { demo }

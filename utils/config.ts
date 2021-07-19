@@ -14,3 +14,9 @@ export const TCB_ENVID = env?.TCB_ENVID || ''
 export const TCB_SECRET_ID = env?.TCB_SECRET_ID || ''
 export const TCB_SECRET_KEY = env?.TCB_SECRET_KEY || ''
 export const TCB_TOKEN_SECRET = env?.TCB_TOKEN_SECRET || ''
+
+export const MYSQL_HOST = env?.MYSQL_HOST || ''
+export const MYSQL_PORT = Number(env?.MYSQL_PORT) || 3306
+export const MYSQL_DB = env?.MYSQL_DB || ''
+export const MYSQL_USER = env?.MYSQL_USER || ''
+export const MYSQL_PSWD = env?.MYSQL_PSWD || ''
