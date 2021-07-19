@@ -1,7 +1,7 @@
 {
   "verbose": false,
   "debug": false,
-  "exec": "ts-node -r tsconfig-paths/register ./dev.ts",
+  "exec": "ts-node -r tsconfig-paths/register ./server.ts",
   "ignore": [
     "mochawesome-report",
     "node_modules",
@@ -23,7 +23,7 @@
     "./routes",
     "./utils",
     "./app.ts",
-    "./dev.ts"
+    "./server.ts"
   ],
   "ext": "ts",
   "inspect": true
