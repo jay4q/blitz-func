@@ -8,7 +8,8 @@ let connection = mysql({
     database: MYSQL_DB,
     user: MYSQL_USER,
     password: MYSQL_PSWD,
-  }
+    connectTimeout: 5
+  },
 })
 
 /**
@@ -22,6 +23,6 @@ export const getConnection = () => {
  * 关闭数据库连接
  * @description 有必要在每次云函数请求结束后关闭
  */
-export const closeConnection = async () => {
-  await connection.end()
+export const closeConnection = () => {
+  connection.quit()
 }

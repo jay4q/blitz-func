@@ -16,14 +16,14 @@ if (!env.error) {
   if (envId && subpath && funcName) {
     const targetDir = `functions/${funcName}`
 
-    await $`rm -rf functions && rm -rf`
+    await $`rm -rf functions && rm -rf dist`
     await $`ttsc -P tsconfig.json`
     console.log('🎉🎉🎉成功编译代码')
     await $`mkdir -p ${targetDir}`
     await $`cp -r dist/ ${targetDir}`
     await $`cp index.js package.json .env.prod ${targetDir}`
     console.log('🎉🎉🎉文件结构梳理完毕')
-    await $`tcb fn deploy --mode prod --path ${subpath} ${funcName}`
+    await $`tcb fn deploy --mode prod --path ${subpath} ${funcName} --force`
     // await $`tcb fn deploy -e ${envId} --path ${subpath} --dir ./dist ${funcName}`
     console.log(chalk.green('🎉🎉🎉成功部署云函数'))
   } else {

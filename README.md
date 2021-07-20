@@ -38,8 +38,8 @@
 + [x] 「重要」更新部署脚本，上线前需要先编译项目
 + [x] 使用 cloudbaserc 配置部署环境，配置参数相比 cli 更多也还可以自定义 nodejs 版本
 + [x] 支持 mysql（注意这是备选方案，模板首选还是云开发云数据库）
++ [x] 支持云函数和云mysql配置同一子网
 + [ ] 支持使用腾讯云托管进行部署
-+ [ ] 支持云函数和云mysql配置同一子网
 
 ## 开发要求
 
@@ -57,3 +57,4 @@
 
 + [koa-router](https://github.com/koajs/router/blob/master/API.md)
 + [云函数配置](https://docs.cloudbase.net/cli-v1/functions/configs.html)
++ [serverless-mysql](https://github.com/jeremydaly/serverless-mysql)
