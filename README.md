@@ -4,11 +4,10 @@
 
 1. 使用 koa 模拟路由，让单个云函数支持多样的业务
 2. 支持使用 typescript 进行开发
-3. 封装了一些常用的业务能力，如 管理端用户登录、授权 等
-4. 支持一键部署至腾讯云开发环境
-   1. 部署云函数
-   2. 部署至腾讯云托管
-5. 等等
+3. 封装了一些常用的业务能力，如 管理端用户登录态 等
+4. 支持一键部署为腾讯云云函数
+5. 配合 [blitz-admin](https://github.com/jay4q/blitz-admin) 开箱即用
+6. 等等
 
 ## 准备和开发
 
@@ -18,8 +17,11 @@
 
 ## 部署
 
-1. 执行 `yarn deploy` 命令部署至线上（全量发布即可）
-2. 「选做」进入云开发控制台，点击「访问服务」，可以给云函数触发路径加上鉴权，增加安全性
+> 前提：确保已安装 [cloudbase-cli](https://docs.cloudbase.net/cli-v1/install.html)
+
+1. 使用 `tcb login` 登录相应的腾讯云账号（如果已登录则可以忽略）
+2. 执行 `yarn deploy` 命令部署至线上（默认即全量发布）
+3. 「选做」进入云开发控制台，点击「访问服务」，可以给云函数触发路径加上鉴权，增加安全性
 
 ## 运维
 
@@ -39,7 +41,6 @@
 + [x] 使用 cloudbaserc 配置部署环境，配置参数相比 cli 更多也还可以自定义 nodejs 版本
 + [x] 支持 mysql（注意这是备选方案，模板首选还是云开发云数据库）
 + [x] 支持云函数和云mysql配置同一子网
-+ [ ] 支持使用腾讯云托管进行部署
 
 ## 开发要求
 
@@ -48,8 +49,7 @@
 
 ## 注意事项
 
-+ 目前仅支持通过 [node-sdk](https://docs.cloudbase.net/api-reference/server/node-sdk/database/database.html) 接入腾讯云开发数据库
-  + 如果需要使用微信云开发相关能力，请自行安装 [wx-server-sdk](https://developers.weixin.qq.com/miniprogram/dev/wxcloud/guide/functions/wx-server-sdk.html) 并修改相关依赖
++ 目前仅支持通过 [node-sdk](https://docs.cloudbase.net/api-reference/server/node-sdk/database/database.html) 接入腾讯云云开发。如需使用微信云开发相关能力，请自行安装 [wx-server-sdk](https://developers.weixin.qq.com/miniprogram/dev/wxcloud/guide/functions/wx-server-sdk.html) 并修改相关依赖
 + 「建议」不要使用 `export default` 而是直接使用 `export` 导出模块
 + 修改环境变量后，需要重新启动
 
