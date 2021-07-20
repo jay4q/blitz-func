@@ -24,7 +24,6 @@ if (!env.error) {
     await $`cp index.js package.json .env.prod ${targetDir}`
     console.log('🎉🎉🎉文件结构梳理完毕')
     await $`tcb fn deploy --mode prod --path ${subpath} ${funcName} --force`
-    // await $`tcb fn deploy -e ${envId} --path ${subpath} --dir ./dist ${funcName}`
     console.log(chalk.green('🎉🎉🎉成功部署云函数'))
   } else {
     console.log(chalk.red(`请检查 ${ENV_FILE} 内的变量是否填写完整`))

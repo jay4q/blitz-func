@@ -4,10 +4,11 @@
 
 1. 使用 koa 模拟路由，让单个云函数支持多样的业务
 2. 支持使用 typescript 进行开发
-3. 封装了一些常用的业务能力，如 管理端用户登录态 等
+3. 支持接入 mysql 数据库
 4. 支持一键部署为腾讯云云函数
-5. 配合 [blitz-admin](https://github.com/jay4q/blitz-admin) 开箱即用
-6. 等等
+5. 封装了一些常用的业务能力，如 管理端用户登录态 等
+6. 配合 [blitz-admin](https://github.com/jay4q/blitz-admin) 开箱即用
+7. 等等
 
 ## 准备和开发
 
@@ -17,11 +18,11 @@
 
 ## 部署
 
-> 前提：确保已安装 [cloudbase-cli](https://docs.cloudbase.net/cli-v1/install.html)
-
-1. 使用 `tcb login` 登录相应的腾讯云账号（如果已登录则可以忽略）
-2. 执行 `yarn deploy` 命令部署至线上（默认即全量发布）
-3. 「选做」进入云开发控制台，点击「访问服务」，可以给云函数触发路径加上鉴权，增加安全性
+1. 确保已新增 `.env.prod` 文件并配置完成需要的环境变量
+2. 确保已安装 [cloudbase-cli](https://docs.cloudbase.net/cli-v1/install.html)
+3. 使用 `tcb login` 登录相应的腾讯云账号（如果已登录则可以忽略）
+4. 执行 `yarn deploy` 命令部署至线上（默认即全量发布）
+5. 「选做」进入云开发控制台，点击「访问服务」，可以给云函数触发路径加上鉴权，增加安全性
 
 ## 运维
 
@@ -31,16 +32,7 @@
 
 ## Todo
 
-+ [x] 验证云函数部署
-+ [x] 使用 zx 部署项目，这样可以做到统一配置
-+ [x] 使用 dotnev 导入需要的环境变量
-+ [x] 兼容云函数 http 集成请求格式
-+ [x] 使用 token 进行业务鉴权
-+ [x] 「重要」使用 typescript
-+ [x] 「重要」更新部署脚本，上线前需要先编译项目
-+ [x] 使用 cloudbaserc 配置部署环境，配置参数相比 cli 更多也还可以自定义 nodejs 版本
-+ [x] 支持 mysql（注意这是备选方案，模板首选还是云开发云数据库）
-+ [x] 支持云函数和云mysql配置同一子网
++ [ ] 若发生 mysql 连接，框架会在请求结束后自行关闭连接
 
 ## 开发要求
 
