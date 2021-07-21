@@ -3,8 +3,8 @@ import { config } from 'dotenv'
 
 export const NODE_DEV = process.env.NODE_ENV === 'development'
 
-export const REQUEST_HEADER_AUTH = 'dlj-api-auth'
-export const REQUEST_UID = 'dlj-admin-uid'
+export const REQUEST_HEADER_ADMIN_AUTH = 'blitz-api-admin-auth'
+export const REQUEST_ADMIN_UID = 'blitz-admin-uid'
 
 const env = config({
   path: path.resolve(process.cwd(), NODE_DEV ? '.env.local' : '.env.prod')

@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken'
 import { Context } from 'koa'
 import { adminGuard } from 'middlewares'
 import { getDatabase } from 'utils/cloudbase'
-import { REQUEST_UID, TCB_TOKEN_SECRET } from 'utils/config'
+import { REQUEST_ADMIN_UID, TCB_TOKEN_SECRET } from 'utils/config'
 import { DB_USER_ADMIN } from 'utils/db'
 import { isArrayEmpty, respond } from 'utils/helper'
 
@@ -33,7 +33,7 @@ user.post('/login', async (ctx: Context) => {
 
   const user = resp.data[0]
   // 生成令牌
-  const token = jwt.sign({ [REQUEST_UID]: user._id }, TCB_TOKEN_SECRET, {
+  const token = jwt.sign({ [REQUEST_ADMIN_UID]: user._id }, TCB_TOKEN_SECRET, {
     expiresIn: '7d'
   })
 
@@ -44,7 +44,7 @@ user.post('/login', async (ctx: Context) => {
 user.get('/profile', adminGuard, async (ctx) => {
   const resp = await getDatabase()
     .collection(DB_USER_ADMIN)
-    .doc(ctx.request[REQUEST_UID])
+    .doc(ctx.request[REQUEST_ADMIN_UID])
     .field({
       nickname: true
     })
