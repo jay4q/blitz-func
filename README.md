@@ -12,17 +12,16 @@
 
 ## 准备和开发
 
-1. 复制 [.env.example](./.env.example) 为 `.env.local` 文件，并根据注释添加配置
+1. 复制 [.env.example](./.env.example) 为 `.env.local` 文件，并根据注释配置环境变量
 2. 执行 `yarn` 安装依赖
-3. 执行 `yarn dev` 命令开始开发
+3. 执行 `yarn dev` 开始开发
 
 ## 部署
 
-1. 确保已新增 `.env.prod` 文件并配置完成需要的环境变量
+1. 确保已新增 `.env.prod` 文件并配置所需的环境变量
 2. 确保已安装 [cloudbase-cli](https://docs.cloudbase.net/cli-v1/install.html)
 3. 使用 `tcb login` 登录相应的腾讯云账号（如果已登录则可以忽略）
 4. 执行 `yarn deploy` 命令部署至线上（默认即全量发布）
-5. 建议：进入云开发控制台，点击「访问服务」，可以给云函数触发路径加上鉴权，增加安全性
 
 ## 运维
 
@@ -32,12 +31,15 @@
 
 ## Todo
 
++ [ ] 门户网站逻辑
+  + [ ] 菜单管理
+  + [ ] 文章管理
++ [ ] 云环境云数据库初始化脚本
 + [ ] 若发生 mysql 连接，框架会在请求结束后自行关闭连接
 
 ## 开发要求
 
-+ 建议还是使用 SDK 自带的 `callFunction` 方法请求云函数，不过可以进行一层封装，以便未来兼容 [HTTP 请求调用云函数](https://docs.cloudbase.net/service/access-cloud-function.html#kua-yu-chu-li)
-+ 「可选」支持接入关系型数据库，详见 `./utils/mysql.ts` 以及 [serverless-mysql](https://github.com/jeremydaly/serverless-mysql)
++ 可选：支持接入关系型数据库，详见 `./utils/mysql.ts` 以及 [serverless-mysql](https://github.com/jeremydaly/serverless-mysql)
 
 ## 注意事项
 
