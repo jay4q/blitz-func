@@ -1,4 +1,4 @@
-import { TokenExpiredError } from 'jsonwebtoken'
+import { TokenExpiredError, JsonWebTokenError } from 'jsonwebtoken'
 import { Context, Next } from 'koa'
 import { BusinessError } from 'utils/helper'
 
@@ -21,7 +21,7 @@ export const errors = async (ctx: Context, next: Next) => {
         data: err.data,
         message: err.message,
       }
-    } else if (err instanceof TokenExpiredError) {
+    } else if (err instanceof TokenExpiredError || err instanceof JsonWebTokenError) {
       // 令牌过期，告知前端重新登录
       ctx.status = 200
       ctx.body = {

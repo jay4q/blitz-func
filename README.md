@@ -22,7 +22,7 @@
 2. 确保已安装 [cloudbase-cli](https://docs.cloudbase.net/cli-v1/install.html)
 3. 使用 `tcb login` 登录相应的腾讯云账号（如果已登录则可以忽略）
 4. 执行 `yarn deploy` 命令部署至线上（默认即全量发布）
-5. 「选做」进入云开发控制台，点击「访问服务」，可以给云函数触发路径加上鉴权，增加安全性
+5. 建议：进入云开发控制台，点击「访问服务」，可以给云函数触发路径加上鉴权，增加安全性
 
 ## 运维
 
@@ -48,5 +48,6 @@
 ## 依赖
 
 + [koa-router](https://github.com/koajs/router/blob/master/API.md)
-+ [云函数配置](https://docs.cloudbase.net/cli-v1/functions/configs.html)
 + [serverless-mysql](https://github.com/jeremydaly/serverless-mysql)
++ [云函数配置](https://docs.cloudbase.net/cli-v1/functions/configs.html)
++ [云函数限制](https://cloud.tencent.com/document/product/876/47177#.E4.BA.91.E5.87.BD.E6.95.B0)
