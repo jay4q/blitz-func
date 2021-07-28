@@ -3,7 +3,7 @@ import { Context, Next } from 'koa'
 import { REQUEST_HEADER_ADMIN_AUTH, REQUEST_ADMIN_UID, TCB_TOKEN_SECRET } from 'utils/config'
 import { respond } from 'utils/helper'
 import { getDatabase } from 'utils/cloudbase'
-import { DB_USER_ADMIN } from 'utils/db'
+import { DB } from 'utils/db'
 
 /**
  * 检测管理端用户是否登录，如果未登录或过期，则被踢出
@@ -21,7 +21,7 @@ export const adminGuard = async (ctx: Context, next: Next) => {
 
   // 查询是否存在管理端用户
   const user = await getDatabase()
-    .collection(DB_USER_ADMIN)
+    .collection(DB.user)
     .doc(tokenInfo[REQUEST_ADMIN_UID])
     .get()
 

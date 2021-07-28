@@ -4,7 +4,7 @@ import { Context } from 'koa'
 import { adminGuard } from 'middlewares'
 import { getDatabase } from 'utils/cloudbase'
 import { REQUEST_ADMIN_UID, TCB_TOKEN_SECRET } from 'utils/config'
-import { DB_USER_ADMIN } from 'utils/db'
+import { DB } from 'utils/db'
 import { isArrayEmpty, respond } from 'utils/helper'
 
 const user = new Router({
@@ -19,7 +19,7 @@ user.post('/login', async (ctx: Context) => {
 
   // 用户名和密码对比
   const resp = await getDatabase()
-    .collection(DB_USER_ADMIN)
+    .collection(DB.user)
     .where({
       username,
       password: password, // todo: 需要加密
@@ -43,7 +43,7 @@ user.post('/login', async (ctx: Context) => {
 // 获取用户信息
 user.get('/profile', adminGuard, async (ctx) => {
   const resp = await getDatabase()
-    .collection(DB_USER_ADMIN)
+    .collection(DB.user)
     .doc(ctx.request[REQUEST_ADMIN_UID])
     .field({
       nickname: true

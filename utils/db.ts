@@ -1,1 +1,3 @@
-export const DB_USER_ADMIN = 'user_admin'
+export const DB = {
+  user: 'user_admin'
+}
