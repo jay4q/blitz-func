@@ -21,7 +21,7 @@ export const adminGuard = async (ctx: Context, next: Next) => {
 
   // 查询是否存在管理端用户
   const user = await getDatabase()
-    .collection(DB.user)
+    .collection(DB.user_admin)
     .doc(tokenInfo[REQUEST_ADMIN_UID])
     .get()
 

@@ -19,7 +19,7 @@ user.post('/login', async (ctx: Context) => {
 
   // 用户名和密码对比
   const resp = await getDatabase()
-    .collection(DB.user)
+    .collection(DB.user_admin)
     .where({
       username,
       password: password, // todo: 需要加密
@@ -43,7 +43,7 @@ user.post('/login', async (ctx: Context) => {
 // 获取用户信息
 user.get('/profile', adminGuard, async (ctx) => {
   const resp = await getDatabase()
-    .collection(DB.user)
+    .collection(DB.user_admin)
     .doc(ctx.request[REQUEST_ADMIN_UID])
     .field({
       nickname: true
