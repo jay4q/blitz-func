@@ -1,7 +1,8 @@
 import Router from '@koa/router'
 import { Context } from 'koa'
-import { closeConnection, getConnection } from 'utils/sql'
+import { getConnection } from 'utils/sql'
 import { respond } from 'utils/helper'
+import { closeConnection } from 'middlewares'
 
 const demo = new Router({
   prefix: '/demo',
@@ -19,10 +20,9 @@ demo.post('/post', async (ctx: Context) => {
   respond.ok(ctx, ctx.request.body)
 })
 
-demo.get('/db', async (ctx: Context) => {
+demo.get('/db', closeConnection, async (ctx: Context) => {
   const resp = await getConnection().query('SELECT username,avatar FROM user')
   respond.ok(ctx, resp)
-  closeConnection()
 })
 
 export { demo }
