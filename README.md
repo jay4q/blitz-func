@@ -5,7 +5,7 @@
 1. 使用 koa 模拟路由，让单个云函数支持多样的业务
 2. 支持使用 typescript 进行开发
 3. 支持接入 mysql 数据库
-4. 支持一键部署为腾讯云云函数
+4. 一键部署至腾讯云函数
 5. 封装了一些常用的业务能力，如 管理端用户登录态 等
 6. 配合 [blitz-admin](https://github.com/jay4q/blitz-admin) 开箱即用
 7. 等等
@@ -40,6 +40,7 @@
 ## 开发要求
 
 + 可选：支持接入关系型数据库，详见 `./utils/mysql.ts` 以及 [serverless-mysql](https://github.com/jeremydaly/serverless-mysql)
++ 建议：如果业务比较复杂，客户端和管理端可以分别部署为两个云函数，这样方便管理
 
 ## 注意事项
 
@@ -53,3 +54,4 @@
 + [serverless-mysql](https://github.com/jeremydaly/serverless-mysql)
 + [云函数配置](https://docs.cloudbase.net/cli-v1/functions/configs.html)
 + [云函数限制](https://cloud.tencent.com/document/product/876/47177#.E4.BA.91.E5.87.BD.E6.95.B0)
++ [云数据库性能优化](https://developers.weixin.qq.com/community/business/doc/00068218a682088d17ca593c45b40d)
