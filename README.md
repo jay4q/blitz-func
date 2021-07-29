@@ -46,6 +46,7 @@
 + 目前仅支持通过 [node-sdk](https://docs.cloudbase.net/api-reference/server/node-sdk/database/database.html) 接入腾讯云云开发。如需使用微信云开发相关能力，请自行安装 [wx-server-sdk](https://developers.weixin.qq.com/miniprogram/dev/wxcloud/guide/functions/wx-server-sdk.html) 并修改相关依赖
 + 「建议」不要使用 `export default` 而是直接使用 `export` 导出模块
 + 修改环境变量后，需要重新启动
++ 微信云开发云数据库存在一些 [限制](https://developers.weixin.qq.com/miniprogram/dev/wxcloud/reference/quota.html) 开发前需要评估
 
 ## 依赖
 

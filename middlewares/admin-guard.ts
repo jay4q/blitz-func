@@ -6,8 +6,8 @@ import { getDatabase } from 'utils/cloudbase'
 import { DB } from 'utils/db'
 
 /**
- * 检测管理端用户是否登录，如果未登录或过期，则被踢出
- * @description 不要用作全局中间件，请在需要的地方自行引入
+ * 路由中间件：检测管理端用户是否登录，如果未登录或过期，则被踢出
+ * @description 
  * @param ctx 
  * @param next 
  */

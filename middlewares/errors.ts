@@ -3,7 +3,7 @@ import { Context, Next } from 'koa'
 import { BusinessError } from 'utils/helper'
 
 /**
- * 统一的异常处理中间件
+ * 全局中间件：异常处理中间件
  * @param ctx 
  * @param next 
  */
