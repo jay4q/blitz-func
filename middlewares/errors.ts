@@ -10,6 +10,12 @@ import { BusinessError } from 'utils/helper'
 export const errors = async (ctx: Context, next: Next) => {
   try {
     await next()
+    if (ctx.status === 404) {
+      ctx.body = {
+        code: 404,
+        message: '找不到对应的内容'
+      }
+    }
   } catch (err) {
     if (err instanceof BusinessError || err.name === 'BusinessError') {
       // 业务异常处理

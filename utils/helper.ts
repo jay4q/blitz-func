@@ -23,11 +23,25 @@ export const respond = {
   }
 }
 
-export const getCreateTime = () => {
-  const createTime = new Date().getTime()
-  return {
-    _createTime: createTime,
-    _updateTime: createTime,
+export const sysTime = {
+  createdAt: () => {
+    const createTime = Math.round(new Date().getTime() / 1000)
+    return {
+      created_at: createTime,
+      updated_at: createTime,
+    }
+  },
+  updatedAt: () => {
+    return {
+      updated_at: Math.round(new Date().getTime() / 1000)
+    }
+  },
+  deletedAt: () => {
+    const deleteTime = Math.round(new Date().getTime() / 1000)
+    return {
+      deleted_at: deleteTime,
+      updated_at: deleteTime,
+    }
   }
 }
 

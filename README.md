@@ -12,9 +12,10 @@
 
 ## 准备和开发
 
-1. 复制 [.env.example](./.env.example) 为 `.env.local` 文件，并根据注释配置环境变量
-2. 执行 `yarn` 安装依赖
-3. 执行 `yarn dev` 开始开发
+1. 建议开通 [按量计费环境](https://cloud.tencent.com/document/product/876/39095) 资源配额较高
+2. 复制 [.env.example](./.env.example) 为 `.env.local` 文件，并根据注释配置环境变量
+3. 执行 `yarn` 安装依赖
+4. 执行 `yarn dev` 开始开发
 
 ## 部署
 
