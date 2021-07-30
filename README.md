@@ -10,12 +10,15 @@
 6. 配合 [blitz-admin](https://github.com/jay4q/blitz-admin) 开箱即用
 7. 等等
 
-## 准备和开发
+## 准备工作
 
-1. 建议开通 [按量计费环境](https://cloud.tencent.com/document/product/876/39095) 资源配额较高
+1. 建议开通 [按量计费环境](https://cloud.tencent.com/document/product/876/39095) 资源配额较高且有免费环境
 2. 复制 [.env.example](./.env.example) 为 `.env.local` 文件，并根据注释配置环境变量
 3. 执行 `yarn` 安装依赖
-4. 执行 `yarn dev` 开始开发
+
+## 开发
+
+1. 执行 `yarn dev` 开始开发，监听 `7001` 端口
 
 ## 部署
 
@@ -26,8 +29,8 @@
 
 ## 运维
 
-1. 登录腾讯云云开发控制台对应云环境
-2. 进入指定云函数查看「日志」和「监控」
+1. 登录 [腾讯云云开发控制台](https://console.cloud.tencent.com/) 对应云环境
+2. 进入当前云函数查看「日志」和「监控」
 3. 可以根据前端响应头里的 `x-tencent-scf-request-id` 属性，在日志中定位对应请求，查看输出的结果
 
 ## Todo
