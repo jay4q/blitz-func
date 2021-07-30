@@ -11,10 +11,11 @@ const env = config({
 if (!env.error) {
   const envId = env.parsed.TCB_ENVID
   const funcName = env.parsed.TCB_FUNC_NAME
-  const subpath = env.parsed.TCB_HTTP_PATH
+  const httpPath = env.parsed.TCB_HTTP_PATH
 
-  if (envId && subpath && funcName) {
+  if (envId && funcName) {
     const targetDir = `functions/${funcName}`
+    const httpTrigger = httpPath ? ` --path ${httpPath}` : ''  // 创建 http 访问服务
 
     await $`rm -rf functions && rm -rf dist`
     await $`ttsc -P tsconfig.json`
@@ -23,7 +24,7 @@ if (!env.error) {
     await $`cp -r dist/ ${targetDir}`
     await $`cp index.js package.json .env.prod ${targetDir}`
     console.log('🎉🎉🎉文件结构梳理完毕')
-    await $`tcb fn deploy --mode prod --path ${subpath} ${funcName} --force`
+    await $`tcb fn deploy --mode prod${httpTrigger} ${funcName} --force`
     console.log(chalk.green('🎉🎉🎉成功部署云函数'))
   } else {
     console.log(chalk.red(`请检查 ${ENV_FILE} 内的变量是否填写完整`))

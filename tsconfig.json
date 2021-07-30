@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "strict": true,
     "allowJs": true,
     "target": "ES2018",
     "moduleResolution": "node",
@@ -10,8 +11,7 @@
     "esModuleInterop": true,
     "preserveConstEnums": true,
     "typeRoots": [
-      "node_modules/@types",
-      "typings"
+      "node_modules/@types"
     ],
     "baseUrl": ".",
     "paths": {
@@ -36,6 +36,7 @@
     "middlewares/**/*",
     "routes/**/*",
     "utils/**/*",
+    "typings/**/*",
     "**/*.ts"
   ],
   "files": [

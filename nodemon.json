@@ -19,6 +19,7 @@
     "restart": ""
   },
   "watch": [
+    "./typings",
     "./middlewares",
     "./routes",
     "./utils",

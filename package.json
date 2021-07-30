@@ -4,6 +4,7 @@
   "description": "nodejs cloud function template made for tecent cloudbase",
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon --config nodemon.json",
+    "build": "ttsc -P tsconfig.json",
     "deploy": "zx ./scripts/deploy.mjs"
   },
   "author": "jay4q.com",
