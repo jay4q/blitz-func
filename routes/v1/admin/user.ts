@@ -6,6 +6,8 @@ import { getDatabase } from 'utils/cloudbase'
 import { REQUEST_ADMIN_UID, TCB_TOKEN_SECRET } from 'utils/config'
 import { DB } from 'utils/db'
 import { isArrayEmpty, respond } from 'utils/helper'
+import { UserLoginReq } from 'typings/user/req'
+import md5 from 'md5'
 
 const user = new Router({
   prefix: '/user',
@@ -13,23 +15,29 @@ const user = new Router({
 
 // 管理员登录
 user.post('/login', async (ctx: Context) => {
-  const { username, password } = ctx.request.body as { username: string, password: string }
+  const { username, password } = ctx.request.body as UserLoginReq
 
-  if (!username || !password) respond.fail(400, '请填写有效的用户名和密码')
+  if (!username || !password) {
+    respond.fail(400, '请填写有效的用户名和密码')
+  }
 
+  const encodedPassword = md5(password)
   // 用户名和密码对比
   const resp = await getDatabase()
     .collection(DB.user_admin)
     .where({
       username,
-      password: password, // todo: 需要加密
+      password: encodedPassword,
     })
     .field({
       nickname: true
     })
+    .limit(1)
     .get()
 
-  if (isArrayEmpty(resp.data)) respond.fail(400, '用户名或密码有误')
+  if (isArrayEmpty(resp.data)) {
+    respond.fail(400, '用户名或密码有误')
+  }
 
   const user = resp.data[0]
   // 生成令牌
