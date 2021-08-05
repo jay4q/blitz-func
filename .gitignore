@@ -4,3 +4,4 @@ dist/
 functions/
 .env.local
 .env.prod
+utils/db.js

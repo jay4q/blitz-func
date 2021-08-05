@@ -31,7 +31,8 @@
 1. 确保已新增 `.env.prod` 文件并配置所需的环境变量
 2. 确保已安装 [cloudbase-cli](https://docs.cloudbase.net/cli-v1/install.html)
 3. 使用 `tcb login` 登录相应的腾讯云账号（如果已登录则可以忽略）
-4. 执行 `yarn deploy` 命令部署至线上（默认即全量发布）
+4. 执行 `yarn deploy` 命令，将云函数部署至产线（默认即全量发布）
+5. 可选：执行 `yarn deploy:db` 命令，将云数据库集合同步至产线（注意不是数据，是集合同步）
 
 ### 4. 运维
 
@@ -44,12 +45,12 @@
 + [ ] 门户网站逻辑
   + [ ] 菜单管理
   + [ ] 文章管理
-+ [ ] 云环境云数据库初始化脚本
 
 ## 开发要求
 
-+ 可选：支持接入关系型数据库，详见 `./utils/mysql.ts` 以及 [serverless-mysql](https://github.com/jeremydaly/serverless-mysql)
++ 可选：支持接入关系型数据库，详见 [代码](./utils/sql.ts) 以及 [serverless-mysql](https://github.com/jeremydaly/serverless-mysql)
 + 建议：如果业务比较复杂或者需要开发小程序，客户端、管理端服务可以分别部署为两个云函数，这样方便管理
++ 建议：所有云数据库表名，都放在 [此处](./utils/db.ts) 管理，既方便统一管理，也方便通过 `yarn deploy:db` 命令一键同步云数据库
 
 ### 1. 如何向这个云函数发起请求
 
@@ -91,4 +92,5 @@ const resp = await callFunction({
 + [serverless-mysql](https://github.com/jeremydaly/serverless-mysql)
 + [云函数配置](https://docs.cloudbase.net/cli-v1/functions/configs.html)
 + [云函数限制](https://cloud.tencent.com/document/product/876/47177#.E4.BA.91.E5.87.BD.E6.95.B0)
++ [云函数索引优化](https://www.infoq.cn/article/mvc0m5ja5vfegfhsc7ks)
 + [云数据库性能优化](https://developers.weixin.qq.com/community/business/doc/00068218a682088d17ca593c45b40d)

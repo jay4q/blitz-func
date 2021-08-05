@@ -1,11 +1,12 @@
 {
   "name": "blitz-func",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "description": "nodejs cloud function template made for tecent cloudbase",
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon --config nodemon.json",
     "build": "ttsc -P tsconfig.json",
-    "deploy": "zx ./scripts/deploy.mjs"
+    "deploy": "zx ./scripts/deploy.mjs",
+    "deploy:db": "tsc ./utils/db.ts --outDir ./utils && zx ./scripts/deploy_db.mjs && rm ./utils/db.js"
   },
   "author": "jay4q.com",
   "license": "ISC",
@@ -22,6 +23,7 @@
     "serverless-mysql": "^1.5.4"
   },
   "devDependencies": {
+    "@cloudbase/manager-node": "latest",
     "@types/koa": "^2.13.4",
     "@types/koa-bodyparser": "^4.3.2",
     "@types/koa__router": "^8.0.7",
