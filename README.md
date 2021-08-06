@@ -42,6 +42,7 @@
 
 ## Todo
 
++ [ ] 所有新增和更新操作，都需要先验证输入参数是否匹配、是否正确，是否可以考虑使用 [class-validator](https://github.com/typestack/class-validator) 同时完成定义和检查
 + [ ] 门户网站逻辑
   + [ ] 菜单管理
   + [ ] 文章管理

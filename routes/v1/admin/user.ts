@@ -1,6 +1,5 @@
 import Router from '@koa/router'
 import jwt from 'jsonwebtoken'
-import { Context } from 'koa'
 import { adminGuard } from 'middlewares'
 import { getDatabase } from 'utils/cloudbase'
 import { REQUEST_ADMIN_UID, TCB_TOKEN_SECRET } from 'utils/config'
@@ -14,7 +13,7 @@ const user = new Router({
 })
 
 // 管理员登录
-user.post('/login', async (ctx: Context) => {
+user.post('/login', async (ctx) => {
   const { username, password } = ctx.request.body as UserLoginReq
 
   if (!username || !password) {
