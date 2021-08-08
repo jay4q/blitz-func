@@ -5,6 +5,7 @@ export const NODE_DEV = process.env.NODE_ENV === 'development'
 
 export const REQUEST_HEADER_ADMIN_AUTH = 'blitz-api-admin-auth'
 export const REQUEST_ADMIN_UID = 'blitz-admin-uid'
+export const REQUEST_ADMIN_ROLES = 'blitz-admin-roles'
 
 const env = config({
   path: path.resolve(process.cwd(), NODE_DEV ? '.env.local' : '.env.prod')

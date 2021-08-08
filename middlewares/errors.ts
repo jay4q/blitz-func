@@ -3,7 +3,7 @@ import { Context, Next } from 'koa'
 import { BusinessError } from 'utils/helper'
 
 /**
- * 全局中间件：异常处理中间件
+ * @description 全局中间件：异常处理中间件
  * @param ctx 
  * @param next 
  */
@@ -13,7 +13,7 @@ export const errors = async (ctx: Context, next: Next) => {
     if (ctx.status === 404) {
       ctx.body = {
         code: 404,
-        message: '找不到对应的内容'
+        message: '找不到相关资源'
       }
     }
   } catch (err) {

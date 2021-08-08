@@ -7,6 +7,7 @@ import { DB } from 'utils/db'
 import { isArrayEmpty, respond } from 'utils/helper'
 import { UserLoginReq } from 'typings/user/req'
 import md5 from 'md5'
+import { UserAdminModel } from 'typings/user/model'
 
 const user = new Router({
   prefix: '/user',
@@ -29,7 +30,8 @@ user.post('/login', async (ctx) => {
       password: encodedPassword,
     })
     .field({
-      nickname: true
+      username: false,
+      password: false,
     })
     .limit(1)
     .get()
@@ -38,13 +40,17 @@ user.post('/login', async (ctx) => {
     respond.fail(400, '用户名或密码有误')
   }
 
+  if (!(resp.data[0] as UserAdminModel).enabled) {
+    respond.fail(400, '该账号已被禁用')
+  }
+
   const user = resp.data[0]
   // 生成令牌
   const token = jwt.sign({ [REQUEST_ADMIN_UID]: user._id }, TCB_TOKEN_SECRET, {
     expiresIn: '7d'
   })
 
-  respond.ok(ctx, { token, user: resp.data[0] })
+  respond.ok(ctx, { token, user })
 })
 
 // 获取用户信息
@@ -53,11 +59,14 @@ user.get('/profile', adminGuard, async (ctx) => {
     .collection(DB.user_admin)
     .doc(ctx.request[REQUEST_ADMIN_UID])
     .field({
-      nickname: true
+      username: false,
+      password: false,
     })
     .get()
 
-  if (isArrayEmpty(resp.data)) respond.fail(404, '无法获取管理员资料')
+  if (isArrayEmpty(resp.data)) {
+    respond.fail(404, '无法获取管理员资料')
+  }
 
   respond.ok(ctx, { user: resp.data[0] })
 })

@@ -2,7 +2,7 @@ import { Context, Next } from 'koa'
 import { closeConnection as close } from 'utils/sql'
 
 /**
- * 路由级中间件：关闭 mysql 连接
+ * @description 路由级中间件：关闭 mysql 连接
  * @param ctx 
  * @param next 
  */
