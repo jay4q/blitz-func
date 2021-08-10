@@ -5,8 +5,9 @@ import { DB } from '../utils/db.js'
 
 console.log(chalk.blue('正在同步云数据库集合...'))
 
-// 只读取产线环境变量
-const ENV_FILE = '.env.prod'
+// 选择合适的环境变量文件夹
+const [envName] = process.argv.slice(3)
+const ENV_FILE = `.env.db.${envName === 'prod' ? 'prod' : 'local'}`
 
 const env = config({
   path: path.resolve(process.cwd(), ENV_FILE)
@@ -22,7 +23,7 @@ const secretId = env.parsed.TCB_SECRET_ID
 const secretKey = env.parsed.TCB_SECRET_KEY
 
 if (!envId || !secretId || !secretKey) {
-  console.log(chalk.yellow(`⚠️⚠️⚠️ 请在${ENV_FILE}中提供产线需要的 TCB_ENVID & TCB_SECRET_ID & TCB_SECRET_KEY`))
+  console.log(chalk.yellow(`⚠️⚠️⚠️ 请在${ENV_FILE}中提供产线需要的 TCB_ENVID & TCB_SECRET_ID & TCB_SECRET_KEY 变量`))
   process.exit(0)
 }
 
