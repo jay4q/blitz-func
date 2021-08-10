@@ -10,9 +10,12 @@ export const roleGuard = (required: string) => {
   return async (ctx: Context, next: Next) => {
     const roles = ctx.request[REQUEST_ADMIN_ROLES] as string[]
 
-    // 拥有的角色不满足要求
-    if (!Array.isArray(roles) || !roles.some(role => role === required)) {
-      respond.fail(403, '您没有访问该资源的权限')
+    if (
+      !Array.isArray(roles) ||
+      // 不是超管且权限不匹配
+      !roles.some(role => role === '*' || role === required)
+    ) {
+      throw new Error('403')
     }
 
     await next()
