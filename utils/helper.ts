@@ -30,6 +30,7 @@ export const sysTime = {
     return {
       created_at: createTime,
       updated_at: createTime,
+      deleted_at: 0,
     }
   },
   updatedAt: () => {

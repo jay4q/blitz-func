@@ -1,7 +1,7 @@
 import { Context, Next } from 'koa'
 import { getDatabase } from 'utils/cloudbase'
 import { DB } from 'utils/db'
-import { respond } from 'utils/helper'
+import { isArrayEmpty, respond } from 'utils/helper'
 
 /**
  * @description 新增/修改前，检查账号名是否唯一
@@ -31,4 +31,16 @@ export const isUnique = async (ctx: Context, next: Next) => {
   }
 
   await next()
+}
+
+/**
+ * @description 获取所有可用的角色
+ */
+export const getRoles = async () => {
+  const resp = await getDatabase()
+    .collection(DB.user_admin_role)
+    .where({ deleted_at: 0 })
+    .get()
+
+  return isArrayEmpty(resp.data) ? [] : resp.data
 }

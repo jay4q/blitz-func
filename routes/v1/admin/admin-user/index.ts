@@ -5,7 +5,7 @@ import { getDatabase } from 'utils/cloudbase'
 import { DB } from 'utils/db'
 import { isArrayEmpty, respond, sysTime } from 'utils/helper'
 import md5 from 'md5'
-import { isUnique } from './service'
+import { getRoles, isUnique } from './service'
 
 const adminUser = new Router({
   prefix: '/admin-user'
@@ -15,11 +15,8 @@ const adminUser = new Router({
 
 // 获取所有角色信息；不会有很多的
 adminUser.get('/roles', async ctx => {
-  const resp = await getDatabase()
-    .collection(DB.user_admin_role)
-    .get()
-
-  respond.ok(ctx, { roles: isArrayEmpty(resp.data) ? [] : resp.data })
+  const roles = await getRoles()
+  respond.ok(ctx, { roles })
 })
 
 // 获取所有管理员
@@ -51,14 +48,8 @@ adminUser.get('/:id', async ctx => {
     respond.fail(404, '找不到该管理员信息')
   }
 
-  const roleResp = await getDatabase()
-    .collection(DB.user_admin_role)
-    .get()
-
-  respond.ok(ctx, {
-    user: userResp.data[0],
-    roles: isArrayEmpty(roleResp.data) ? [] : roleResp.data
-  })
+  const roles = await getRoles()
+  respond.ok(ctx, { roles, user: userResp.data[0] })
 })
 
 // 新增一个管理员
