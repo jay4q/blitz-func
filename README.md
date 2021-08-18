@@ -1,14 +1,16 @@
 # 腾讯云开发云函数｜模版
 
-基于腾讯云开发，同时兼容本地开发和产线部署的云函数的最小化范式，支持以下特性：
+基于腾讯云开发的云函数模版，支持以下特性：
 
-1. 使用 koa 模拟路由，让单个云函数支持多样的业务
-2. 支持使用 typescript 进行开发
+1. 使用 [koa](https://github.com/koajs/koa) 模拟路由，让单个云函数支持多样的业务
+2. 使用 typescript 进行开发
 3. 支持接入 mysql 数据库
-4. 兼容本地开发；支持区分研发、产线环境；支持一键部署至腾讯云函数
-5. 封装了一些常用的业务能力，如 管理端用户登录态 等
-6. 配合 [blitz-admin](https://github.com/jay4q/blitz-admin) 开箱即用
-7. 等等
+4. 支持本地开发模式并支持热更新
+5. 支持隔离研发和产线环境
+6. 支持一键部署至腾讯云开发环境
+7. 封装了一些基础的业务能力，如 用户鉴权、角色校验 等
+8. 配合 [blitz-admin](https://github.com/jay4q/blitz-admin) 开箱即用
+9. 等等
 
 需要注意的是，该云函数模版只是为 web server 提供了基本范式。如果希望服务于微信小程序，并在微信开发者工具中调试，请参考 [blitz-wxapp-func](https://github.com/jay4q/blitz-wxapp-func)
 
@@ -18,13 +20,15 @@
 
 1. 建议开通 [按量计费环境](https://cloud.tencent.com/document/product/876/39095) 资源配额较高且有免费环境
 2. 复制 [.env.example](./.env.example) 为 `.env.local` 文件，并根据注释配置环境变量
-3. 执行 `yarn` 安装依赖
+3. 同上，复制 [.env.db.example](./.env.db.example) 为 `.env.db.local` 文件，并根据注释配置环境变量
+4. 执行 `yarn` 安装依赖
 
 > 个人建议开发环境和产线环境隔离
 
 ### 2. 开发
 
 1. 执行 `yarn dev` 开始开发，监听 `7001` 端口
+2. 如新增、修改集合，直接在 [db.ts](./utils/db.ts) 中声明即可，并通过 `yarn deploy:db` 同步更新开发环境的云数据库集合
 
 ### 3. 部署
 
@@ -32,7 +36,7 @@
 2. 确保已安装 [cloudbase-cli](https://docs.cloudbase.net/cli-v1/install.html)
 3. 使用 `tcb login` 登录相应的腾讯云账号（如果已登录则可以忽略）
 4. 执行 `yarn deploy` 命令，将云函数部署至产线（默认即全量发布）
-5. 可选：执行 `yarn deploy:db` 命令，将云数据库集合同步至产线（注意不是数据，是集合同步）
+5. 可选：在已新增 `.env.db.prod` 文件并配置所需环境变量情况下，执行 `yarn deploy:db:prod` 命令，将云数据库集合同步至产线（注意不是数据，是集合同步）
 
 ### 4. 运维
 
@@ -51,7 +55,7 @@
 
 + 可选：支持接入关系型数据库，详见 [代码](./utils/sql.ts) 以及 [serverless-mysql](https://github.com/jeremydaly/serverless-mysql)
 + 建议：如果业务比较复杂或者需要开发小程序，客户端、管理端服务可以分别部署为两个云函数，这样方便管理
-+ 建议：所有云数据库表名，都放在 [此处](./utils/db.ts) 统一管理，张扬方便通过 `yarn deploy:db` 命令一键同步云数据库
++ 建议：所有云数据库表名，都放在 [此处](./utils/db.ts) 统一管理
 
 ### 1. 如何向这个云函数发起请求
 
