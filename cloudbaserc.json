@@ -9,6 +9,9 @@
       "installDependency": true,
       "handler": "index.main",
       "memorySize": 128,
+      "envVariables": {
+        "TZ": "Asia/Shanghai"
+      },
       "vpc": {
         "vpcId": "{{env.TCB_VPC_ID}}",
         "subnetId": "{{env.TCB_VPC_SUBNET_ID}}"
