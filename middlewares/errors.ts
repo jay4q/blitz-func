@@ -16,12 +16,12 @@ export const errors = async (ctx: Context, next: Next) => {
         message: '找不到相关资源'
       }
     }
-  } catch (err) {
-    if (err instanceof BusinessError || err.name === 'BusinessError') {
-      // 业务异常处理
-      ctx.status = typeof err.code === 'number'
-        ? (err.code >= 600 || err.code < 200 ? err.code : 200) : 200
+  } catch (err: any) {
+    // 不通过 HTTP 状态码，而是通过自定义状态码处理异常行为
+    ctx.status = 200
 
+    if (err instanceof BusinessError || err.name === 'BusinessError') {
+      // 一般的业务异常
       ctx.body = {
         code: err.code,
         data: err.data,
@@ -29,7 +29,6 @@ export const errors = async (ctx: Context, next: Next) => {
       }
     } else if (err instanceof TokenExpiredError || err instanceof JsonWebTokenError) {
       // 令牌过期，告知前端重新登录
-      ctx.status = 200
       ctx.body = {
         code: 401,
         message: '登录已失效，请重新登录'
@@ -41,7 +40,6 @@ export const errors = async (ctx: Context, next: Next) => {
       console.error('<====== 异常响应结束 =====>')
 
       // 所有未业务化的异常
-      ctx.status = 200
       ctx.body = {
         code: 500,
         message: err.message || '未知异常，请稍后再试'
