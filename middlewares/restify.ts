@@ -13,13 +13,16 @@ export const restify = async (ctx: Context, next: Next) => {
     const event = (ctx.req as any).apiGateway.event
 
     if (!event) respond.fail(400, '请求内容有误')
-
     if (!!event.body) ctx.request.body = JSON.parse(event.body)
 
     ctx.url = event.path
     ctx.request.method = event.httpMethod
-    ctx.request.query = event.queryStringParameters
     ctx.request.header = event.headers
+
+    // URL中的查询字符串，优先级高于云函数中 queryStringParameters 这个参数
+    if (!(event.path as string).includes('?')) {
+      ctx.request.query = event.queryStringParameters
+    }
   }
 
   await next()
