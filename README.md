@@ -2,15 +2,13 @@
 
 基于腾讯云开发的云函数模版，支持以下特性：
 
-1. 使用 [koa](https://github.com/koajs/koa) 模拟路由，让单个云函数支持多样的业务
-2. 使用 typescript 进行开发
-3. 支持接入 mysql 数据库
-4. 支持本地开发模式并支持热更新
-5. 支持隔离研发和产线环境
-6. 支持一键部署至腾讯云开发环境
-7. 封装了一些基础的业务能力，如 用户鉴权、角色校验 等
-8. 配合 [blitz-admin](https://github.com/jay4q/blitz-admin) 开箱即用
-9. 等等
+1. 🧱 使用 [koa](https://github.com/koajs/koa) 模拟路由，让单个云函数就能支持多样的业务
+2. 🔥 使用 typescript 进行开发
+3. 📦 支持接入 mysql 数据库
+4. 😄 支持本地开发和热更新。并与产线无缝对接
+5. 🚀 支持一键部署至腾讯云开发环境
+6. 🔐 产线代码加密，交付给甲方无需担心源码泄漏
+7. 等等
 
 需要注意的是，该云函数模版只是为 web server 提供了基本范式。如果希望服务于微信小程序，并在微信开发者工具中调试，请参考 [blitz-wxapp-func](https://github.com/jay4q/blitz-wxapp-func)
 
@@ -36,7 +34,8 @@
 2. 确保已安装 [cloudbase-cli](https://docs.cloudbase.net/cli-v1/install.html)
 3. 使用 `tcb login` 登录相应的腾讯云账号（如果已登录则可以忽略）
 4. 执行 `yarn deploy` 命令，将云函数部署至产线（默认即全量发布）
-5. 可选：在已新增 `.env.db.prod` 文件并配置所需环境变量情况下，执行 `yarn deploy:db:prod` 命令，将云数据库集合同步至产线（注意不是数据，是集合同步）
+5. 可选：执行 `yarn deploy:full` 命令，将云函数(JS)源码部署至产线。区别是，步骤4最终编译出来的，只有一个 `index.js` 文件，极大优化了云函数体积、加快了部署速度并一定程度上做到了加密（对私有化部署很友好）
+6. 可选：在已新增 `.env.db.prod` 文件并配置所需环境变量情况下，执行 `yarn deploy:db:prod` 命令，将云数据库集合同步至产线（注意不是数据，是集合同步）
 
 ### 4. 运维
 
@@ -46,7 +45,8 @@
 
 ## Todo
 
-+ [ ] 所有新增和更新操作，都需要先验证输入参数是否匹配、是否正确，是否可以考虑使用 [class-validator](https://github.com/typestack/class-validator) 同时完成定义和检查
++ [ ] 将业务相关代码从模板路由中移除（毕竟只是一个模板，并不是说教人如何编写业务代码）。但是可以出一个简单的教程，教导用户如何使用
++ [ ] 所有新增和更新操作，都需要先验证输入参数是否匹配、是否正确，是否可以考虑使用 [zod](https://github.com/colinhacks/zod) 同时完成定义和检查
 + [ ] 门户网站逻辑
   + [ ] 菜单管理
   + [ ] 文章管理
@@ -110,3 +110,4 @@ const resp = await callFunction({
 + [云函数限制](https://cloud.tencent.com/document/product/876/47177#.E4.BA.91.E5.87.BD.E6.95.B0)
 + [云函数索引优化](https://www.infoq.cn/article/mvc0m5ja5vfegfhsc7ks)
 + [云数据库性能优化](https://developers.weixin.qq.com/community/business/doc/00068218a682088d17ca593c45b40d)
++ [ncc将工程最终编译为一个JS文件](https://github.com/vercel/ncc)

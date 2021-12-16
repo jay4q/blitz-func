@@ -6,4 +6,4 @@ functions/
 .env.prod
 .env.db.local
 .env.db.prod
-utils/db.js
+yarn-error.log

@@ -1,11 +1,12 @@
 {
   "name": "blitz-func",
-  "version": "1.7.0",
-  "description": "nodejs cloud function template made for tecent cloudbase",
+  "version": "1.8.0",
+  "description": "nodejs+koa+typescript template made for tecent cloudbase function",
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon --config nodemon.json",
     "build": "ttsc -P tsconfig.json",
-    "deploy": "zx ./scripts/deploy.mjs",
+    "deploy": "zx ./scripts/deploy_min.mjs",
+    "deploy:full": "zx ./scripts/deploy.mjs",
     "deploy:db": "tsc ./utils/db.ts --outDir ./utils && zx ./scripts/deploy_db.mjs && rm ./utils/db.js",
     "deploy:db:prod": "tsc ./utils/db.ts --outDir ./utils && zx ./scripts/deploy_db.mjs prod && rm ./utils/db.js"
   },
@@ -29,6 +30,7 @@
     "@types/koa-bodyparser": "^4.3.2",
     "@types/koa__router": "^8.0.7",
     "@types/node": "^16.3.2",
+    "@vercel/ncc": "^0.33.0",
     "cross-env": "^7.0.3",
     "nodemon": "^2.0.12",
     "ts-node": "^10.1.0",
@@ -36,6 +38,6 @@
     "ttypescript": "^1.5.12",
     "typescript": "4.2.3",
     "typescript-transform-paths": "2.2.3",
-    "zx": "^2.0.0"
+    "zx": "^4.2.0"
   }
 }
