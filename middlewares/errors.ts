@@ -8,6 +8,10 @@ import { BusinessError } from 'utils/helper'
  * @param next 
  */
 export const errors = async (ctx: Context, next: Next) => {
+  console.log('<====== 云函数入参 =====>')
+  console.log((ctx.req as any).apiGateway.event)
+  console.log('<=====================>')
+
   try {
     await next()
     if (ctx.status === 404) {
@@ -34,10 +38,10 @@ export const errors = async (ctx: Context, next: Next) => {
         message: '登录已失效，请重新登录'
       }
     } else {
-      console.error('<====== 异常响应日志 =====>')
-      console.error(ctx.request)
-      console.error(err)
-      console.error('<====== 异常响应结束 =====>')
+      console.log('<====== 异常响应日志 =====>')
+      console.log('❌ 异常如下')
+      console.log(err)
+      console.log('<====== 异常响应结束 =====>')
 
       // 所有未业务化的异常
       ctx.body = {
