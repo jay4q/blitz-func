@@ -24,7 +24,7 @@
 + `index.js/ts`: 产线运行的入口文件
 + `cloudbaserc.json`: 部署至腾讯云开发云函数的配置文件
 
-## 开发须知
+## 使用流程
 
 ### 1. 准备工作
 
@@ -68,14 +68,10 @@
 2. 进入当前云函数查看「日志」和「监控」
 3. 可以根据前端响应头里的 `x-tencent-scf-request-id` 属性，在日志中定位对应请求，查看输出的结果
 
-## Todo
-
-+ [ ] 中间件：限制IP频繁访问
-+ [ ] 所有新增和更新操作，都需要先验证输入参数是否匹配、是否正确，是否可以考虑使用 [zod](https://github.com/colinhacks/zod) 同时完成定义和检查
-
-## 开发｜注意事项
+## 注意事项
 
 + 注意：修改环境变量文件(.env.*)后，需要重新启动
++ 注意：如果希望使用 `yarn deploy:full` 部署产线代码，请将 `cloudbaserc.json` 中的 `installDependency` 改为 true
 + 注意：目前仅支持通过 [node-sdk](https://docs.cloudbase.net/api-reference/server/node-sdk/database/database.html) 接入腾讯云云开发
 + 建议：所有云数据库表名，都放在 [此处](./utils/db.ts) 统一管理
 + 建议：通过自定义状态码，覆盖所有业务异常情况。其余异常都通过状态码 500 表示。同样由于前端发起的云函数请求，因此不存在需要判断 HTTP 状态码的情况
@@ -108,6 +104,11 @@ const resp = await callFunction({
   }
 })
 ```
+
+## Todo
+
++ [ ] 中间件：限制IP频繁访问
++ [ ] 所有新增和更新操作，都需要先验证输入参数是否匹配、是否正确，是否可以考虑使用 [zod](https://github.com/colinhacks/zod) 同时完成定义和检查
 
 ## 参考/依赖
 
