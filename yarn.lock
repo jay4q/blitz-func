@@ -681,11 +681,6 @@ chalk@^4.1.2:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
 
-charenc@0.0.2:
-  version "0.0.2"
-  resolved "https://registry.npmjs.org/charenc/-/charenc-0.0.2.tgz#c0a1d2f3a7092e03774bfa83f14c0fc5790a8667"
-  integrity sha1-wKHS86cJLgN3S/qD8UwPxXkKhmc=
-
 chokidar@^3.2.2:
   version "3.5.2"
   resolved "https://registry.nlark.com/chokidar/download/chokidar-3.5.2.tgz#dba3976fcadb016f66fd365021d91600d01c1e75"
@@ -881,11 +876,6 @@ cross-spawn@^7.0.1:
     path-key "^3.1.0"
     shebang-command "^2.0.0"
     which "^2.0.1"
-
-crypt@0.0.2:
-  version "0.0.2"
-  resolved "https://registry.npmjs.org/crypt/-/crypt-0.0.2.tgz#88d7ff7ec0dfb86f713dc87bbb42d044d3e6c41b"
-  integrity sha1-iNf/fsDfuG9xPch7u0LQRNPmxBs=
 
 crypto-random-string@^2.0.0:
   version "2.0.0"
@@ -1530,11 +1520,6 @@ is-binary-path@~2.1.0:
   dependencies:
     binary-extensions "^2.0.0"
 
-is-buffer@~1.1.6:
-  version "1.1.6"
-  resolved "https://registry.npmjs.org/is-buffer/-/is-buffer-1.1.6.tgz#efaa2ea9daa0d7ab2ea13a97b2b8ad51fefbe8be"
-  integrity sha512-NcdALwpXkTm5Zvvbk7owOUSvVvBKDgKP5/ewfXEznmQFfs4ZRmanOeKBTjRVjka3QFoN6XJ+9F3USqfHqTaU5w==
-
 is-ci@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npm.taobao.org/is-ci/download/is-ci-2.0.0.tgz?cache=0&sync_timestamp=1613631987391&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fis-ci%2Fdownload%2Fis-ci-2.0.0.tgz#6bc6334181810e04b5c22b3d589fdca55026404c"
@@ -1942,15 +1927,6 @@ map-stream@~0.1.0:
   version "0.1.0"
   resolved "https://registry.npmjs.org/map-stream/-/map-stream-0.1.0.tgz#e56aa94c4c8055a16404a0674b78f215f7c8e194"
   integrity sha1-5WqpTEyAVaFkBKBnS3jyFffI4ZQ=
-
-md5@^2.3.0:
-  version "2.3.0"
-  resolved "https://registry.npmjs.org/md5/-/md5-2.3.0.tgz#c3da9a6aae3a30b46b7b0c349b87b110dc3bda4f"
-  integrity sha512-T1GITYmFaKuO91vxyoQMFETst+O71VUPEU3ze5GNzDm0OWdP8v1ziTaAEPUr/3kLsY3Sftgz242A1SetQiDL7g==
-  dependencies:
-    charenc "0.0.2"
-    crypt "0.0.2"
-    is-buffer "~1.1.6"
 
 media-typer@0.3.0:
   version "0.3.0"

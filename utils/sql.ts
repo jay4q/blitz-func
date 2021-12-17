@@ -13,15 +13,14 @@ let connection = mysql({
 })
 
 /**
- * 获取数据库连接
+ * @description 获取数据库连接
  */
 export const getConnection = () => {
   return connection
 }
 
 /**
- * 关闭数据库连接
- * @description 有必要在每次云函数请求结束后关闭
+ * @description 关闭数据库连接；有必要在每次云函数请求结束后关闭
  */
 export const closeConnection = () => {
   connection.quit()

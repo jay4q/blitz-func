@@ -1,5 +1,4 @@
 import { Context } from 'koa'
-import { BaseModel } from 'typings/base'
 
 export class BusinessError extends Error {
   code: number
@@ -48,8 +47,3 @@ export const sysTime = {
 }
 
 export const isArrayEmpty = arr => !Array.isArray(arr) || arr.length === 0
-
-export const createModel = <Model extends BaseModel>(data: Omit<Model, '_id' | 'created_at' | 'updated_at'>) => ({
-  ...sysTime.createdAt(),
-  ...data,
-})

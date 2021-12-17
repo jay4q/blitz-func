@@ -1,7 +1,7 @@
 import { config } from 'dotenv'
 import * as path from 'path'
 import tcb from '@cloudbase/manager-node'
-import { DB } from '../utils/db.js'
+import { TCB_DB } from '../utils/db.js'
 
 console.log(chalk.blue('正在同步云数据库集合...'))
 
@@ -39,8 +39,8 @@ let exist = 0, success = 0, error = 0
 let error_list = []
 
 await Promise.all(
-  Object.keys(DB).map(key => {
-    const dbName = DB[key]
+  Object.keys(TCB_DB).map(key => {
+    const dbName = TCB_DB[key]
     return (async () => {
       try {
         const res = await database.createCollectionIfNotExists(dbName)

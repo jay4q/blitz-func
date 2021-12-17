@@ -1,5 +1,4 @@
+export * from './logger'
 export * from './errors'
 export * from './restify'
-export * from './role-guard'
-export * from './admin-guard'
 export * from './close-connection'

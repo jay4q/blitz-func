@@ -17,10 +17,8 @@
     "@koa/cors": "^3.1.0",
     "@koa/router": "^10.0.0",
     "dotenv": "^10.0.0",
-    "jsonwebtoken": "^8.5.1",
     "koa": "^2.13.1",
     "koa-bodyparser": "^4.3.0",
-    "md5": "^2.3.0",
     "serverless-http": "^2.7.0",
     "serverless-mysql": "^1.5.4"
   },

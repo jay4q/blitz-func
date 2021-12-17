@@ -1,4 +1,3 @@
-import { TokenExpiredError, JsonWebTokenError } from 'jsonwebtoken'
 import { Context, Next } from 'koa'
 import { BusinessError } from 'utils/helper'
 
@@ -8,10 +7,6 @@ import { BusinessError } from 'utils/helper'
  * @param next 
  */
 export const errors = async (ctx: Context, next: Next) => {
-  console.log('<====== 云函数入参 =====>')
-  console.log((ctx.req as any).apiGateway.event)
-  console.log('<=====================>')
-
   try {
     await next()
     if (ctx.status === 404) {
@@ -30,12 +25,6 @@ export const errors = async (ctx: Context, next: Next) => {
         code: err.code,
         data: err.data,
         message: err.message,
-      }
-    } else if (err instanceof TokenExpiredError || err instanceof JsonWebTokenError) {
-      // 令牌过期，告知前端重新登录
-      ctx.body = {
-        code: 401,
-        message: '登录已失效，请重新登录'
       }
     } else {
       console.log('<====== 异常响应日志 =====>')
