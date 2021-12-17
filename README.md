@@ -71,7 +71,6 @@
 ## Todo
 
 + [ ] 中间件：限制IP频繁访问
-+ [ ] `index.js` => `index.ts`
 + [ ] 所有新增和更新操作，都需要先验证输入参数是否匹配、是否正确，是否可以考虑使用 [zod](https://github.com/colinhacks/zod) 同时完成定义和检查
 
 ## 开发｜注意事项

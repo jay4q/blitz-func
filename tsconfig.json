@@ -41,7 +41,8 @@
   ],
   "files": [
     "app.ts",
-    "server.ts"
+    "server.ts",
+    "index.ts"
   ],
   "exclude": [
     "node_modules",
