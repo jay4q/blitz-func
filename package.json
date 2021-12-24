@@ -5,8 +5,8 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon --config nodemon.json",
     "build": "ttsc -P tsconfig.json",
-    "deploy": "zx ./scripts/deploy_min.mjs",
-    "deploy:full": "zx ./scripts/deploy.mjs",
+    "deploy": "zx ./scripts/deploy.mjs",
+    "deploy:full": "zx ./scripts/deploy_full.mjs",
     "deploy:db": "tsc ./utils/db.ts --outDir ./utils && zx ./scripts/deploy_db.mjs && rm ./utils/db.js",
     "deploy:db:prod": "tsc ./utils/db.ts --outDir ./utils && zx ./scripts/deploy_db.mjs prod && rm ./utils/db.js"
   },
