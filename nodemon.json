@@ -8,7 +8,6 @@
     "dist",
     "functions",
     "scripts",
-    "**/*.d.ts",
     "*.test.ts",
     "*.spec.ts",
     "fixtures/*",
@@ -18,14 +17,7 @@
   "events": {
     "restart": ""
   },
-  "watch": [
-    "./typings",
-    "./middlewares",
-    "./routes",
-    "./utils",
-    "./app.ts",
-    "./server.ts"
-  ],
+  "watch": ["./typings", "./middlewares", "./routes", "./utils", "./app.ts", "./server.ts"],
   "ext": "ts",
   "inspect": true
 }

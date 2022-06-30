@@ -23,13 +23,11 @@
       ],
       "utils": [
         "utils"
+      ],
+      "typings": [
+        "typings"
       ]
-    },
-    "plugins": [
-      {
-        "transform": "typescript-transform-paths"
-      }
-    ]
+    }
   },
   "compileOnSave": false,
   "includes": [
@@ -38,11 +36,6 @@
     "utils/**/*",
     "typings/**/*",
     "**/*.ts"
-  ],
-  "files": [
-    "app.ts",
-    "server.ts",
-    "index.ts"
   ],
   "exclude": [
     "node_modules",

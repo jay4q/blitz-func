@@ -13,9 +13,8 @@ if (!env.error) {
 
   if (funcName) {
     await $`rm -rf functions && rm -rf dist`
-    await $`ttsc -P tsconfig.json`
-    console.log(chalk.green('🎉🎉🎉 成功编译TS代码'))
-    await $`ncc build ./dist/index.js -s -m -o functions/${funcName}/`
+    console.log(chalk.green('🎉🎉🎉 成功清理旧代码'))
+    await $`ncc build index.ts --source-map --minify --out ./functions/${funcName}`
     await $`cp .env.prod functions/${funcName}/`
     console.log(chalk.green('🎉🎉🎉 成功缩减JS代码并输出了产线代码'))
     await $`tcb fn deploy --mode prod ${funcName} --force`

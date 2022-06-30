@@ -1,9 +1,13 @@
 .DS_STORE
-node_modules
+node_modules/
 dist/
 functions/
-.env.local
+
+# .env
+.env.dev
 .env.prod
-.env.db.local
-.env.db.prod
+cloudbaserc.json
+
+# repo
+yarn.lock
 yarn-error.log

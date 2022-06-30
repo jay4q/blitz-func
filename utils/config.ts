@@ -1,10 +1,10 @@
-import path from 'path'
 import { config } from 'dotenv'
+import path from 'path'
 
 export const NODE_DEV = process.env.NODE_ENV === 'development'
 
 const env = config({
-  path: path.resolve(process.cwd(), NODE_DEV ? '.env.local' : '.env.prod')
+  path: path.resolve(process.cwd(), NODE_DEV ? '.env.dev' : '.env.prod'),
 })?.parsed
 
 // ---
